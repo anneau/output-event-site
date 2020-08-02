@@ -1,0 +1,12 @@
+{
+	"generators": {
+		"32c2b68e": {
+			"type": "local",
+			"path": "/app/.npm/_npx/1/lib/node_modules/create-nuxt-app/lib",
+			"hash": "32c2b68e"
+		}
+	},
+	"answers": {
+		"32c2b68e__npm__": {}
+	}
+}

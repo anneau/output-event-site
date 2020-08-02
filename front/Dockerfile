@@ -1,4 +1,4 @@
-FROM node:12.5.0-alpine
+FROM node:14.7.0-alpine
 
 ENV HOME="/app" \
   LANG=C.UTF-8 \

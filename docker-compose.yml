@@ -7,7 +7,7 @@ services:
     environment:
       - TZ=Asia/Tokyo
     volumes:
-      - ./back/tmp/db:/var/lib/postgresql/data
+      - ./api/tmp/db:/var/lib/postgresql/data
 
   api:
     container_name: api
