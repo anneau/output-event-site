@@ -1,0 +1,91 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.5
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  #DisabledByDefault: true
+  Include:
+    - 'app/controllers/**/*'
+    - 'app/models/**/*'
+    - 'spec/**/*'
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/bundle/**/*'
+    - 'tmp'
+    - 'node_modules/**/*'
+    - 'docker'
+    - 'bin/*'
+    - 'test/test_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'Rakefile'
+    - 'config.ru'
+
+Rails:
+  Enabled: true
+
+Style/DoubleNegation:
+  Exclude:
+    - '**/*.*.jbuilder'
+
+Metrics/MethodLength:
+  Max: 30
+
+Style/StringLiterals:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/Capfile'
+    - '**/CamelCase.rb'
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+SymbolArray:
+  Exclude:
+    - '**/Gemfile'
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 120
+
+Metrics/LineLength:
+  Max: 120
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  Exclude:
+    - '**/*.*.jbuilder'
+Lint/ParenthesesAsGroupedExpression:
+  Exclude:
+    - '**/*.*.jbuilder'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - '**/*.*.jbuilder'
