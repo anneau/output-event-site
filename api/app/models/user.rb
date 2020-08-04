@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  with_options presence: true do
-    validates :name
-    validates :qiitas_id
-  end
+  validates :name, presence: true
 
   belongs_to :team
 end

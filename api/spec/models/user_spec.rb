@@ -19,13 +19,6 @@ RSpec.describe User, type: :model do
           expect(user.errors.messages[:name]).to include("can't be blank")
         end
       end
-
-      context 'qiitas_idの値がnullのとき' do
-        let(:user) { build(:user, qiitas_id: nil) }
-        it 'バリデーションが通らない' do
-          expect(user.errors.messages[:qiitas_id]).to include("can't be blank")
-        end
-      end
     end
   end
 end
