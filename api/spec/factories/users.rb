@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :user do
-    name { '@testuser' }
-    qiitas_id { 1 }
-    points_count { 1 }
-    likes_count { 1 }
-    items_count { 1 }
+    name { Faker::Games::Pokemon.name }
+    points_count { Faker::Number.within(range: 1..10) }
+    likes_count { Faker::Number.within(range: 1..10) }
+    items_count { Faker::Number.within(range: 1..10) }
 
     association :team
   end
