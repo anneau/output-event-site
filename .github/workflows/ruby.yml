@@ -19,11 +19,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     services:
       postgres:
-        image: postgres:12
+        image: postgres:11.4
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: my_database
+          POSTGRES_DB: app_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -37,20 +37,23 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
-        ruby-version: 2.6
+        ruby-version: 2.6.3
 
     - name: Install dependencies
+      working-directory: ./api
       run: bundle install
 
     - name: Set env
       run: |
         echo '::set-env name=RAILS_ENV::test'
-        echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/my_database'
+        echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/app_test'
 
     - name: setup DB
+      working-directory: ./api
       run: |
         bundle exec rails db:schema:load
 
     - name: Run tests
+      working-directory: ./api
       run: |
         bundle exec rspec
