@@ -7,8 +7,7 @@ RSpec.describe 'Api::V1::Teams', type: :request do
   describe '#index' do
     subject { get api_v1_teams_path }
 
-    it 'ステータスコード200を返す' do
-    end
+    it_behaves_like 'ステータスを返す', 200
     it '指定したデータが取得できる' do
       subject
       expect(parsed_body.length).to eq 3
