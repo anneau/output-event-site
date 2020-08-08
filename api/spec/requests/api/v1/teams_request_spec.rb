@@ -15,4 +15,34 @@ RSpec.describe 'Api::V1::Teams', type: :request do
       expect(parsed_body[0]['users'][0].keys).to eq %w[id name points_count likes_count items_count]
     end
   end
+
+  describe '#update' do
+    subject { patch api_v1_team_path(team.id), params: params }
+    let(:team) { create(:team) }
+
+    context '正常にteamが更新できる場合' do
+      let(:params) { { name: 'edited_team_name' } }
+
+      it 'teamのnameが変わる' do
+        unedited_teams_name = team.name
+        expect { subject }.to change { team.reload.name }.from(unedited_teams_name).to params[:name]
+      end
+      it_behaves_like 'ステータスを返す', 200
+    end
+
+    context 'teamが更新できない場合' do
+      context 'nameが空文字列の場合' do
+        let(:params) { { name: '' } }
+
+        it_behaves_like 'ステータスを返す', 400
+      end
+
+      context 'パラメータで指定したteamIDがレコードに存在しない時' do
+        let(:team) { build(:team, id: Team.ids.max + 1) }
+        let(:params) { { name: 'edited_team_name' } }
+
+        it_behaves_like 'ステータスを返す', 404
+      end
+    end
+  end
 end
