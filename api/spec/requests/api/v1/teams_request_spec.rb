@@ -16,6 +16,29 @@ RSpec.describe 'Api::V1::Teams', type: :request do
     end
   end
 
+  describe '#create' do
+    subject { post api_v1_teams_path, params: params }
+
+    context '正常にteamが作成できる場合' do
+      let(:params) { { name: 'team_name' } }
+
+      it_behaves_like 'ステータスを返す', 201
+      it 'teamの数が+1される' do
+        expect { subject }.to change { Team.count }.by(1)
+      end
+      it '作成したJSONデータを返す' do
+        subject
+        expect(parsed_body.keys).to eq %w[id name points_count likes_count items_count rank users]
+      end
+    end
+
+    context 'teamが作成できない場合' do
+      let(:params) { { name: '' } }
+
+      it_behaves_like 'ステータスを返す', 400
+    end
+  end
+
   describe '#update' do
     subject { patch api_v1_team_path(team.id), params: params }
     let(:team) { create(:team) }

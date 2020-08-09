@@ -10,31 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_141141) do
-
+ActiveRecord::Schema.define(version: 20_200_808_141_141) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "teams", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "points_count", default: 0
-    t.integer "likes_count", default: 0
-    t.integer "items_count", default: 0
-    t.integer "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'teams', force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'points_count', default: 0
+    t.integer 'likes_count', default: 0
+    t.integer 'items_count', default: 0
+    t.integer 'rank'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "points_count", default: 0
-    t.integer "likes_count", default: 0
-    t.integer "items_count", default: 0
-    t.bigint "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_users_on_team_id"
+  create_table 'users', force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'points_count', default: 0
+    t.integer 'likes_count', default: 0
+    t.integer 'items_count', default: 0
+    t.bigint 'team_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['team_id'], name: 'index_users_on_team_id'
   end
 
-  add_foreign_key "users", "teams"
+  add_foreign_key 'users', 'teams'
 end
