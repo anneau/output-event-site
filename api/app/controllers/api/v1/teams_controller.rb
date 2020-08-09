@@ -5,6 +5,11 @@ class Api::V1::TeamsController < ApplicationController
     render json: @teams, each_serializer: Api::V1::TeamSerializer
   end
 
+  def create
+    @team = Team.create!(permitted_team_params)
+    render json: @team, status: :created
+  end
+
   def update
     @team.update!(permitted_team_params)
     render json: @team
