@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'active_model_serializers'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+# 定期的にバッチを回すためのgem
+gem 'whenever'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
