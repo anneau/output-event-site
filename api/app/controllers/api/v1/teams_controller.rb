@@ -1,7 +1,7 @@
 class Api::V1::TeamsController < ApplicationController
   before_action :set_team, only: %i[update]
   def index
-    @teams = Team.all
+    @teams = Team.all.order(points_count: 'DESC')
     render json: @teams, each_serializer: Api::V1::TeamSerializer
   end
 
