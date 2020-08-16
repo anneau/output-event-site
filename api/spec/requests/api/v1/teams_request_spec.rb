@@ -9,9 +9,11 @@ RSpec.describe 'Api::V1::Teams', type: :request do
 
     it_behaves_like 'ステータスを返す', 200
     it '指定したデータが取得できる' do
+      binding.pry
+
       subject
       expect(parsed_body.length).to eq 3
-      expect(parsed_body[0].keys).to eq %w[id name points_count likes_count items_count rank users]
+      expect(parsed_body[0].keys).to eq %w[id name points_count likes_count items_count users]
       expect(parsed_body[0]['users'][0].keys).to eq %w[id name points_count likes_count items_count]
     end
   end
@@ -28,7 +30,7 @@ RSpec.describe 'Api::V1::Teams', type: :request do
       end
       it '作成したJSONデータを返す' do
         subject
-        expect(parsed_body.keys).to eq %w[id name points_count likes_count items_count rank users]
+        expect(parsed_body.keys).to eq %w[id name points_count likes_count items_count users]
       end
     end
 

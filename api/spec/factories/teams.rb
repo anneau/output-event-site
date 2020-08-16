@@ -4,6 +4,5 @@ FactoryBot.define do
     points_count { Faker::Number.within(range: 1..10) }
     likes_count { Faker::Number.within(range: 1..10) }
     items_count { Faker::Number.within(range: 1..10) }
-    rank { Faker::Number.within(range: 1..10) }
   end
 end

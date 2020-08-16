@@ -7,7 +7,6 @@
         現在のポイント：{{ team.points_count }}<br />
         総投稿数：{{ team.items_count }}<br />
         LGTM数：{{ team.likes_count }}<br />
-        現在の順位：{{ team.rank }}<br />
       </li>
     </ul>
   </div>
