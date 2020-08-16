@@ -1,8 +1,8 @@
 require 'rails_helper'
 require 'rake'
 
-describe 'user:update' do
-  subject(:task) { Rake.application['user:update'] }
+describe 'users:update' do
+  subject(:task) { Rake.application['users:update'] }
   let!(:user) { create(:hata) }
 
   it '正常にuserが更新できる' do

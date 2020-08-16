@@ -1,5 +1,6 @@
 module Assets::Models::User
   extend self
+
   def update
     # DBからnameカラムの値が入った配列を取得
     user_names = User.pluck(:name)
