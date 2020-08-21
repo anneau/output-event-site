@@ -1,6 +1,6 @@
 FROM ruby:2.6.3-alpine3.10
 
-ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql less git" \
+ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql less git bash" \
   DEV_PACKAGES="build-base curl-dev" \
   HOME="/app" \
   LANG=C.UTF-8 \
@@ -20,4 +20,5 @@ RUN apk update && \
 
 ADD . ${HOME}
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+RUN bundle exec whenever --update-crontab
+CMD crond -l 1 -f && ["rails", "server", "-b", "0.0.0.0"]
