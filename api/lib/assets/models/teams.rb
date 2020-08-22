@@ -1,6 +1,5 @@
-module Assets::Models::Team
+module Assets::Models::Teams
   extend self
-
   # DBに保存されている全てのteamの記事投稿数、LGTM数、ポイントを更新
   def update
     Team.all.each do |team|
@@ -16,5 +15,6 @@ module Assets::Models::Team
       # 合算した記事投稿数、LGTM数、ポイントでDB更新
       team.update!(items_count: users_items_count_sum, likes_count: users_likes_count_sum, points_count: users_points_count_sum)
     end
+    puts 'teams was successfully updated!'
   end
 end

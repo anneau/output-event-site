@@ -1,6 +1,5 @@
-module Assets::Models::User
+module Assets::Models::Users
   extend self
-
   def update
     # DBからnameカラムの値が入った配列を取得
     user_names = User.pluck(:name)
@@ -15,5 +14,6 @@ module Assets::Models::User
 
       @user.update!(likes_count: user_params[:likes_count], items_count: user_params[:items_count], points_count: points_count)
     end
+    puts 'users was successfully updated!'
   end
 end
