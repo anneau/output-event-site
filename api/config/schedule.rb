@@ -9,11 +9,16 @@ set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 
 ENV.each { |k, v| env(k, v) }
 
-# 1分毎に`HelloWorld`を出力する
+# 1分毎に`HelloWorld`を出力する(テスト用)
 every 1.minutes do
-  begin
-    rake "rss:hello"
-  rescue => e
-    raise e
-  end
+  rake 'rss:hello'
+rescue StandardError => e
+  raise e
+end
+# 1時間ごとに全てのuserとteamのデータを更新する
+every 1.hours do
+  rake 'users:update'
+  rake 'teams:update'
+rescue StandardError => e
+  raise e
 end
