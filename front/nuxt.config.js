@@ -50,12 +50,20 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/bulma'],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false,
+        },
+      },
+    },
+  },
 
   // hot reloading
   watchers: {
