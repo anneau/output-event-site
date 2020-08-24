@@ -12,6 +12,8 @@ module Assets::Models::Teams
         users_likes_count_sum += user.likes_count
         users_points_count_sum += user.points_count
       end
+      # チーム人数が4人の場合、得点を3/4倍する(小数点以下は切り捨て)
+      users_points_count_sum = (users_points_count_sum * 1.75).floor if team.users.size == 4
       # 合算した記事投稿数、LGTM数、ポイントでDB更新
       team.update!(items_count: users_items_count_sum, likes_count: users_likes_count_sum, points_count: users_points_count_sum)
     end
