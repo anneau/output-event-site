@@ -16,6 +16,7 @@ services:
       - ./api:/app
     depends_on:
       - db
+    command: bash -c "crond && exec bundle exec rails s -b '0.0.0.0'"
 
   front:
     container_name: front
