@@ -21,4 +21,4 @@ RUN apk update && \
 ADD . ${HOME}
 
 RUN bundle exec whenever --update-crontab
-CMD crond -l 1 -f && ["rails", "server", "-b", "0.0.0.0"]
+
