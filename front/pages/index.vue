@@ -1,65 +1,69 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
+  <main>
+    <div class="container">
       <h1 class="title">
-        front
+        <img src="@/assets/images/title.png" alt="アウトプット夏祭り2020" />
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th>チーム名</th>
+            <th>ポイント</th>
+            <th>LGTM数</th>
+            <th>投稿数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in rankingList" :key="item.id">
+            <th>
+              <span class="rank">{{ index + 1 }}</span
+              >位
+            </th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.points_count }}pt</td>
+            <td>{{ item.likes_count }}LGTM</td>
+            <td>{{ item.items_count }}投稿</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
+    <div class="bg-container">
+      <img class="bg1" src="@/assets/images/bg1.png" />
+      <img class="bg2" src="@/assets/images/bg2.png" />
+      <img class="bg3" src="@/assets/images/bg3.png" />
+    </div>
+  </main>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      rankingList: [
+        {
+          id: 1,
+          name: 'TeamA',
+          points_count: 100,
+          likes_count: 20,
+          items_count: 10,
+        },
+        {
+          id: 2,
+          name: 'hogehogehoge',
+          points_count: 80,
+          likes_count: 10,
+          items_count: 8,
+        },
+        {
+          id: 2,
+          name: 'エイチームブライズ',
+          points_count: 80,
+          likes_count: 5,
+          items_count: 3,
+        },
+      ],
+    }
+  },
+}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
