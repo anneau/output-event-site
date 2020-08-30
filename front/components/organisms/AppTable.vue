@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr v-for="(team, index) in teams" :key="team.id">
-        <td>{{ index + 1 }}</td>
+        <td>{{ rank(index, teams) }}</td>
         <td>{{ team.name }}</td>
         <td>{{ team.points_count }}</td>
         <td>{{ team.items_count }}</td>
@@ -27,6 +27,18 @@ export default {
     teams: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    rank(index, teams) {
+      // TODO: もっと綺麗に書ける気がする
+      if (index === 0) {
+        return 1
+      } else if (teams[index].points_count === teams[index - 1].points_count) {
+        return index
+      } else {
+        return index + 1
+      }
     },
   },
 }
