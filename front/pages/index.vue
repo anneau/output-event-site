@@ -44,7 +44,7 @@ export default {
         {
           id: 1,
           name: 'TeamA',
-          points_count: 110,
+          points_count: 100,
           likes_count: 20,
           items_count: 10,
         },
