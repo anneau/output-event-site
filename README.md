@@ -12,6 +12,8 @@ Nuxt.js & Ruby on Railsで作成された特設サイトです。
 ## 開発セットアップ
 ### コンテナのビルド
 $ docker-compose build
+### seedデータの流し込み
+$ docker-compose run --rm api rake db:seed_fu
 ### 立ち上げ
 $ docker-compose up -d
 
