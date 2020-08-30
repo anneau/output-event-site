@@ -15,6 +15,8 @@ gem 'active_model_serializers'
 # gem 'redis', '~> 4.0'
 # 定期的にバッチを回すためのgem
 gem 'whenever'
+# シードの導入
+gem 'seed-fu'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
