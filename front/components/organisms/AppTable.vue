@@ -31,9 +31,9 @@ export default {
   },
 
   methods: {
-    rank(teams) {
+    rank() {
       // TODO: もっと綺麗に書ける気がする
-      const points = teams.map((team) => team.points_count)
+      const points = this.teams.map((team) => team.points_count)
       const sorted = points.slice().sort((before, after) => after - before)
       return sorted.slice().map((rank) => sorted.indexOf(rank) + 1)
     },
