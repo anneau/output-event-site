@@ -1,0 +1,32 @@
+FROM ruby:2.6.3-alpine3.10 as builder
+
+ENV HOME /app
+ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev tzdata postgresql-dev postgresql"
+ENV RAILS_ENV production
+
+WORKDIR ${HOME}
+
+COPY Gemfile Gemfile.lock ${HOME}/
+
+RUN apk update && \
+  apk upgrade && \
+  apk add --update ${RUNTIME_PACKAGES} && \
+  bundle install -j4
+
+FROM ruby:2.6.3-alpine3.10
+
+ENV HOME /app
+ENV LANG ja_JP.UTF-8
+
+RUN apk update && \
+  apk upgrade && \
+  apk add --update postgresql postgresql-dev
+
+WORKDIR ${HOME}
+
+COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "bundle", "exec", "rails", "s", "-b", "0.0.0.0" ]
